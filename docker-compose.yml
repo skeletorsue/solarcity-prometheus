@@ -1,0 +1,11 @@
+version: '3'
+services:
+  metrics:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    volumes:
+      - ./accounts.json:/app/accounts.json
+    environment:
+      USERNAME:
+      PASSWORD:
