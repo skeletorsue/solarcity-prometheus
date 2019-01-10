@@ -70,7 +70,12 @@ class Tesla:
                 headers={'Authorization': 'Bearer ' + self._get_access_token()}
         )
 
-        return r.json()['response']
+        data = r.json()
+
+        if data is None or 'response' not in data:
+            return {}
+
+        return data['response']
 
     def solar_status(self, site_id):
         r = requests.get(
@@ -78,4 +83,9 @@ class Tesla:
                 headers={'Authorization': 'Bearer ' + self._get_access_token()}
         )
 
-        return r.json()
+        data = r.json()
+
+        if data is None:
+            return {}
+
+        return data
